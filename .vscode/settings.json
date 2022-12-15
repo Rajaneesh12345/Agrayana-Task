@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"*.js": "javascriptreact"
+	},
+	"editor.formatOnSave": true,
+	"prettier.semi": false,
+	"prettier.printWidth": 9999,
+	"prettier.trailingComma": "none",
+	"editor.tabSize": 2
+}

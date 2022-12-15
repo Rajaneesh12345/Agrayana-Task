@@ -1,0 +1,27 @@
+.main {
+	/* background-color: #f7f7f7; */
+	padding: 8rem 6rem;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	position: relative;
+}
+
+.dropzone {
+	text-align: center;
+	padding: 100px 30px 100px 30px;
+	border: 3px dashed #eeeeee;
+	background-color: #fafafa;
+	color: #bdbdbd;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+.selected-file-wrapper {
+	text-align: center;
+}
+
+.selected-file {
+	color: #000;
+	font-weight: bold;
+}
