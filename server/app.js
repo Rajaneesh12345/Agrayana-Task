@@ -100,7 +100,7 @@ app.post('/save', async (req, res, next) => {
 app.post('/search', async (req, res, next) => {
 	try {
 		const doc = await Form.findOne(req.body)
-		console.log(req.body, doc, '\n')
+		// console.log(req.body, doc, '\n')
 
 		res.status(200).json({ success: true, doc })
 	} catch (err) {

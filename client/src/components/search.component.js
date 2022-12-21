@@ -25,8 +25,8 @@ function Search(props) {
 		<form className=" m-3" onSubmit={handleSubmit}>
 			<div className="form-group row">
 				<div className="col-4">
-					<div class="">
-						<select onChange={e => setSearchField(e.target.value)} class="form-select" id="sel1" name="sellist">
+					<div className="">
+						<select onChange={e => setSearchField(e.target.value)} className="form-select" id="sel1" name="sellist">
 							<option>name</option>
 							<option>business</option>
 							<option>adress</option>
