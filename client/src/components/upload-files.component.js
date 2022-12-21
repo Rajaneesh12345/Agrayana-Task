@@ -74,6 +74,11 @@ export default class UploadFiles extends Component {
 	render() {
 		const { selectedFiles, currentFile, progress } = this.state
 
+		if (this.props.everything === true) {
+			this.delete()
+			this.props.setEverything(false)
+		}
+
 		return (
 			<div>
 				{currentFile && (

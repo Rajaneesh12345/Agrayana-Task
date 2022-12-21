@@ -13,6 +13,7 @@
     "react-dropzone": "^11.3.4",
     "react-scripts": "4.0.3",
     "tesseract.js": "^4.0.1",
+    "use-immer": "^0.8.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

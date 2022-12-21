@@ -1,12 +1,23 @@
 import React, { useState } from 'react'
+import StateContext from '../services/StateContext'
+import DispatchContext from '../services/DispatchContext'
 
 import axios from 'axios'
 
 function FormFunction(props) {
 	const [saved, setSaved] = useState(false)
 
+	const appState = React.useContext(StateContext)
+	const appDispatch = React.useContext(DispatchContext)
+
 	function removeAll(e) {
-		window.location.reload()
+		// appDispatch({ type: 'setEverything', value: true }, { type: 'setName', value: '' }, { type: 'setBusiness', value: '' }, { type: 'setAdress', value: '' }, { type: 'setPhone', value: '' }, { type: 'setService', value: '' })
+		props.setName('')
+		props.setBusiness('')
+		props.setAdress('')
+		props.setPhone('')
+		props.setService('')
+		props.setEverything(true)
 	}
 
 	async function handleSubmit(e) {
@@ -22,7 +33,7 @@ function FormFunction(props) {
 			})
 			.then(res => {
 				setSaved(true)
-				window.location.reload()
+				removeAll()
 			})
 	}
 
@@ -75,7 +86,7 @@ function FormFunction(props) {
 						<input
 							value={props.adress}
 							onChange={e => {
-								props.setadress(e.target.value)
+								props.setAdress(e.target.value)
 							}}
 							type="text"
 							className="form-control"
