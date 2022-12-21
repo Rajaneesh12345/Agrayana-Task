@@ -11,8 +11,6 @@ const Form = require('./models/formModel')
 app.use(express.static(path.join(__dirname, '/public')))
 app.set('views', path.join(__dirname, '/public'))
 
-app.set('view engine', 'ejs')
-
 app.use(helmet())
 app.use(cors())
 app.use(express.json({ limit: '10kb' }))
@@ -23,10 +21,6 @@ app.use(express.urlencoded({ extended: true, limit: '10kb' }))
 ///////////////////////////////////////////////////////////////
 
 let extracted, name, business, adress, phone, service
-
-app.get('/', (req, res) => {
-	res.render('index')
-})
 
 app.get('/files', (req, res) => {
 	res.status(200).json({
@@ -59,18 +53,17 @@ app.post('/extract', upload.single('file'), async (req, res) => {
 			adress = extracted[2][1]
 			phone = extracted[3][1]
 			service = extracted[4][1]
-			// console.log(name, business, adress, phone, service)
 		})
 		.catch(err => console.log(err))
 	res.status(200).json({
 		success: true,
 		data: {
 			message: 'success',
-			name: name,
-			business: business,
-			adress: adress,
-			phone: phone,
-			service: service
+			name,
+			business,
+			adress,
+			phone,
+			service
 		}
 	})
 })
@@ -106,7 +99,9 @@ app.post('/save', async (req, res, next) => {
 
 app.post('/search', async (req, res, next) => {
 	try {
-		const doc = await Form.find(req.body)
+		const doc = await Form.findOne(req.body)
+		console.log(req.body, doc, '\n')
+
 		res.status(200).json({ success: true, doc })
 	} catch (err) {
 		console.log(err)
