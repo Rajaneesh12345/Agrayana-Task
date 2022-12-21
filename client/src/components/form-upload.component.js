@@ -88,7 +88,7 @@ function FormFunction(props) {
 
 				<div className="form-group row">
 					<label htmlFor="phone" className="col-sm-2 col-form-label">
-						Contact
+						Phone
 					</label>
 					<div className="col-sm-10">
 						<input

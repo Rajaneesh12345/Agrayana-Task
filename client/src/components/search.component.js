@@ -3,12 +3,16 @@ import axios from 'axios'
 
 function Search(props) {
 	const [searchValue, setSearchValue] = useState('')
+	const [searchField, setSearchField] = useState('name')
 
 	async function handleSubmit(e) {
 		console.log('handleSubmit')
 		e.preventDefault()
-		let ret = await axios.post('http://localhost:8000/search', { phone: searchValue })
-		ret = ret.data.doc[0]
+		const obj = {}
+		obj[searchField] = searchValue
+		let ret = await axios.post('http://localhost:8000/search', obj)
+		ret = ret.data.doc
+		console.log(ret)
 		if (ret) {
 			props.setName(ret.name)
 			props.setBusiness(ret.business)
@@ -20,14 +24,25 @@ function Search(props) {
 	return (
 		<form className=" m-3" onSubmit={handleSubmit}>
 			<div className="form-group row">
-				<div className="col-9">
-					<input value={searchValue} onChange={e => setSearchValue(e.target.value)} type="text" className="form-control" id="name" placeholder="Search for Data" />
+				<div className="col-4">
+					<div class="">
+						<select onChange={e => setSearchField(e.target.value)} class="form-select" id="sel1" name="sellist">
+							<option>name</option>
+							<option>business</option>
+							<option>adress</option>
+							<option>phone</option>
+							<option>service</option>
+						</select>
+					</div>
 				</div>
 				<div className="col">
-					<button type="submit" className="btn btn-secondary">
-						Search
-					</button>
+					<input value={searchValue} onChange={e => setSearchValue(e.target.value)} type="text" className="form-control" id="name" placeholder="search field" />
 				</div>
+			</div>
+			<div className="text-center">
+				<button type="submit" className="btn btn-secondary">
+					Search
+				</button>
 			</div>
 		</form>
 	)
